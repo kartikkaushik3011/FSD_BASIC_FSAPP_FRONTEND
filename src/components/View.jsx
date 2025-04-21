@@ -3,16 +3,17 @@ import axios from 'axios'
 
 function View() {
     const [data, setData] = React.useState([])
+    const apiUrl=import.meta.env.VITE_BACKEND_URL
 
     useEffect(() => {
-        axios.get('http://localhost:9000/users')
+        axios.get(`${apiUrl}/users`)
         .then((res) => {
             setData(res.data)
         })
         .catch((err) => {
             console.log(err)
         })
-    }, [data])
+    }, [data, apiUrl])
   return (
     <div>
         {data.map((user) => {

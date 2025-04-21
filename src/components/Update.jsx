@@ -2,12 +2,13 @@ import React from 'react'
 import axios from 'axios'
 
 function Update() {
+    const apiUrl=import.meta.env.VITE_BACKEND_URL
     const [id, setId] = React.useState('')
     const [name, setName] = React.useState('')
     const [age, setAge] = React.useState('')
     const handleSubmit =async (e) => {
         e.preventDefault()
-        await axios.put(`http://localhost:9000/users/${id}`, { name, age })
+        await axios.put(`${apiUrl}/${id}`, { name, age })
         .catch((err) => {
             console.error('Error:', err.response?.data || err.message);
           });   

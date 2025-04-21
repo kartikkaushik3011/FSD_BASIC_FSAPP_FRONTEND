@@ -2,10 +2,11 @@ import React from 'react'
 import axios from 'axios'
 
 function Delete() {
+    const apiUrl=import.meta.env.VITE_BACKEND_URL
     const [id, setId] = React.useState('')
     const handleSubmit =async (e) => {
         e.preventDefault()
-        await axios.delete(`http://localhost:9000/users/${id}`)
+        await axios.delete(`${apiUrl}/users/${id}`)
         .catch((err) => {
             console.error('Error:', err.response?.data || err.message);
           }); 
